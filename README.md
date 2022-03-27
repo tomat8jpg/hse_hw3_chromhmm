@@ -93,3 +93,30 @@ RefSeqTES
 ![image](https://user-images.githubusercontent.com/60805733/160281159-3e7368ad-dd42-4c25-8577-c7c976a95bf5.png)
 Слабо определяется меткой H3K9me3  
 ![image](https://user-images.githubusercontent.com/60805733/160281192-5dba182a-e5da-4051-bbce-438fb4cc8ff2.png)
+
+# Использованные команды 
+```python
+!curl -O https://raw.githubusercontent.com/deepjavalibrary/d2l-java/master/tools/fix-colab-gpu.sh && bash fix-colab-gpu.sh  
+!curl -O https://raw.githubusercontent.com/deepjavalibrary/d2l-java/master/tools/colab_build.sh && bash colab_build.sh  
+!java --list-modules | grep "jdk.jshell"  
+! wget http://compbio.mit.edu/ChromHMM/ChromHMM.zip  
+!unzip /content/ChromHMM.zip  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescControlStdAlnRep1.bam -O Control.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescCtcfStdAlnRep1.bam -O Ctcf.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH3k09me3StdAlnRep1.bam -O H3k09me.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH3k4me1StdAlnRep1.bam -O H3k4me1.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH3k9acStdAlnRep1.bam -O H3k9ac.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH3k27acStdAlnRep1.bam -O H3k27ac.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH4k20me1StdAlnRep1.bam -O H4k20me1.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH3k79me2StdAlnRep1.bam -O H3k79me2.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH3k36me3StdAlnRep1.bam -O H3k36me3.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH3k27me3StdAlnRep1.bam -O H3k27me3.bam  
+! wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeBroadHistone/wgEncodeBroadHistoneH1hescH3k4me3StdAlnRep1.bam -O H3k4me3.bam  
+!java -mx5000M -jar /content/ChromHMM/ChromHMM.jar BinarizeBam -b 200  /content/ChromHMM/CHROMSIZES/hg19.txt /content/ cellmarkfiletable.txt   binarizedData  
+!java -mx5000M -jar /content/ChromHMM/ChromHMM.jar LearnModel -b 200 /content/binarizedData/ /content/output/ 10 hg19  
+from google.colab import drive  
+drive.mount('/content/gdrive')  
+!mv /content/output /content/gdrive/MyDrive/HW3  
+from google.colab import drive  
+drive.mount('/content/gdrive')  
+```
